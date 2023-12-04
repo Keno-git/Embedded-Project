@@ -1,17 +1,23 @@
-from scipy.io.wavfile import write
+#from scipy.io.wavfile import write
 from speechbrain.pretrained import EncoderClassifier
-import sounddevice as sd
+#import sounddevice as sd
 
-model = EncoderClassifier.from_hparams(source="speechbrain/lang-id-voxlingua107-ecapa", savedir="tmp")
-duration = 5
-sample_rate = 16000
+def identify_language(path):
 
-print("Recording")
-myrecording = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=2)
-sd.wait()
-print("Done")
 
-wav_file = "output.wav"
-write(wav_file, sample_rate, myrecording)
+    model = EncoderClassifier.from_hparams(source="speechbrain/lang-id-voxlingua107-ecapa", savedir="tmp")
 
-model.classify_file("output.wav")
+    #Easiest and fastest way is to read file, it may be possible to read direct from torch tensor but I'm excluding that code from here from now since it's a mess.
+    """
+    duration = 5
+    sample_rate = 16000 
+    print("Recording")
+    myrecording = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=2)
+    sd.wait()
+    print("Done")
+    wav_file = "output.wav"
+    write(wav_file, sample_rate, myrecording)
+    """
+
+    matrix, tensor, shape, language = model.classify_file(path)
+    return language[0]

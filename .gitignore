@@ -168,3 +168,6 @@ data_swedish/
 data_english/
 saved_models/
 check_points/
+check_points_spanish/
+tmp/
+.conda/

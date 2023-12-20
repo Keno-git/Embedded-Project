@@ -1,0 +1,8 @@
+numpy==1.26.2
+opencv_python==4.8.0.74
+pyaudio==0.2.14
+speechbrain==0.5.16
+tensorflow==2.15.0.post1
+tensorflow_text==2.15.0
+transformers==4.36.2
+whisper==1.1.10

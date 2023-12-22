@@ -1,0 +1,1 @@
+The main branch contains the program code and when the contents of the models.zip file is included into the /models/translation folder program will run. In the branch audio2text the speech-to-text code is available for viewing.
